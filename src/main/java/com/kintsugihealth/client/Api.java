@@ -1,6 +1,5 @@
 package com.kintsugihealth.client;
 
-import com.kintsugihealth.client.openapi.PredictionHandler;
 import com.kintsugihealth.client.openapi.api.InitiateApi;
 import com.kintsugihealth.client.openapi.invoker.ApiException;
 import com.kintsugihealth.client.openapi.model.InitiateNewInitiateRequest;

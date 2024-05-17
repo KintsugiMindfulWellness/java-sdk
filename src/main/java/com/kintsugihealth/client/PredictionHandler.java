@@ -1,6 +1,5 @@
-package com.kintsugihealth.client.openapi;
+package com.kintsugihealth.client;
 
-import com.kintsugihealth.client.Api;
 import com.kintsugihealth.client.openapi.api.PredictSubmitV1Api;
 import com.kintsugihealth.client.openapi.invoker.ApiException;
 import com.kintsugihealth.client.openapi.model.PredictResponsePredictionInitiated;
