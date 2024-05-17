@@ -6,6 +6,7 @@ import com.kintsugihealth.client.openapi.invoker.ApiException;
 import com.kintsugihealth.client.openapi.model.PredictResponsePredictionInitiated;
 import com.kintsugihealth.client.openapi.model.PredictResponsePredictionRecord;
 import com.kintsugihealth.client.openapi.model.PredictResponsePredictionRecordBySession;
+import com.kintsugihealth.client.openapi.model.SessionSessionMetadata;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -19,18 +20,20 @@ public class PredictionHandler {
 
     private Api api;
 
-    public String predict(File audioFile, Integer allowedSampleRate) throws ApiException {
+    public String predict(
+            String userId, File audioFile, SessionSessionMetadata metadata, Integer allowedSampleRate
+    ) throws ApiException {
         BigDecimal sampleRate = allowedSampleRate != null ? BigDecimal.valueOf(allowedSampleRate) : null;
         PredictSubmitV1Api predictApi = new PredictSubmitV1Api();
         PredictResponsePredictionInitiated response = predictApi.predictionPost(
-                api.getXApiKey(), audioFile, api.newSession(), sampleRate
+                api.getXApiKey(), audioFile, api.newSession(userId, metadata), sampleRate
         );
 
         return response.getSessionId();
     }
 
-    public String predict(File audioFile) throws ApiException {
-        return predict(audioFile, null);
+    public String predict(String userId, File audioFile) throws ApiException {
+        return predict(userId, audioFile, null, null);
     }
 
     public PredictResponsePredictionRecordBySession getPredictionBySession(String sessionId) throws ApiException {

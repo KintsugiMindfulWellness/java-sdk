@@ -2,9 +2,7 @@ package com.kintsugihealth.client.example;
 
 import com.kintsugihealth.client.Api;
 import com.kintsugihealth.client.openapi.invoker.ApiException;
-import com.kintsugihealth.client.openapi.model.PredictResponsePredictionRecord;
-import com.kintsugihealth.client.openapi.model.PredictResponsePredictionRecordBySession;
-import com.kintsugihealth.client.openapi.model.PredictionValidPHQInt;
+import com.kintsugihealth.client.openapi.model.*;
 
 import java.io.File;
 import java.util.Arrays;
@@ -12,39 +10,47 @@ import java.util.List;
 
 public class Improved {
     public static void main(String[] args) throws ApiException {
-        //Configuration Parameters
+        //Configuration parameters
         String xApiKey = System.getenv("X_API_KEY");
         String userId = System.getenv("USER_ID");
         String url = System.getenv("URL");
-        boolean isInitiated = true;
 
-        //API Instantiation
-        Api api = new Api(xApiKey, url, userId, isInitiated);
-
-        //Prediction
+        //Arguments
         File audioFile = new File("/Users/jackson/Downloads/test_audio.wav");
-        String sessionId = api.prediction().predict(audioFile);
+        int allowedSampleRate = 44100;
+        SessionSessionMetadata metadata = new SessionSessionMetadata()
+                .age(39)
+                .gender(SessionGender.MALE_GENDER);
+
+        //API instantiation
+        Api api = new Api(xApiKey, url);
+
+        //Prediction using all arguments
+        api.prediction().predict(userId, audioFile, metadata, allowedSampleRate);
+
+        //Prediction using fewer arguments
+        String sessionId = api.prediction().predict(userId, audioFile);
         System.out.println("Prediction SessionId: " + sessionId);
 
-        //Get Prediction By Session ID
+        //Get prediction by session ID
         PredictResponsePredictionRecordBySession predictionBySession = api.prediction().getPredictionBySession(sessionId);
         System.out.println(predictionBySession);
 
-        //Get Prediction By User ID
+        //Get prediction by user ID
         List<PredictResponsePredictionRecord> predictionsByUser = api.prediction().getPredictionsByUser(userId);
         System.out.println(predictionsByUser);
 
-        //Prediction Feedback
+        //Depression feedback
         api.feedback().depression(sessionId, true);
 
-        //PHQ2 Feedback
+        //PHQ2 feedback
         List<PredictionValidPHQInt> answersPHQ2 = Arrays.asList(
                 PredictionValidPHQInt.PHQVal1,
                 PredictionValidPHQInt.PHQVal2
         );
         api.feedback().phq2(sessionId, answersPHQ2);
 
-        //PHQ9 Feedback
+        //PHQ9 feedback
         List<PredictionValidPHQInt> answersPHQ9 = Arrays.asList(
                 PredictionValidPHQInt.PHQVal1,
                 PredictionValidPHQInt.PHQVal2,
