@@ -1,13 +1,17 @@
 package com.kintsugihealth.client;
 
+import com.kintsugihealth.client.openapi.api.PredictGetApi;
 import com.kintsugihealth.client.openapi.api.PredictSubmitV1Api;
 import com.kintsugihealth.client.openapi.invoker.ApiException;
 import com.kintsugihealth.client.openapi.model.PredictResponsePredictionInitiated;
+import com.kintsugihealth.client.openapi.model.PredictResponsePredictionRecord;
+import com.kintsugihealth.client.openapi.model.PredictResponsePredictionRecordBySession;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +33,11 @@ public class PredictionHandler {
         return predict(audioFile, null);
     }
 
-    public void getPredictionBySession(String sessionId) {}
+    public PredictResponsePredictionRecordBySession getPredictionBySession(String sessionId) throws ApiException {
+        return new PredictGetApi().predictSessionsSessionIdGet(sessionId, api.getXApiKey());
+    }
 
-    public void getPredictionsByUser(String userId) {}
+    public List<PredictResponsePredictionRecord> getPredictionsByUser(String userId) throws ApiException {
+        return new PredictGetApi().predictUsersUserIdGet(userId, api.getXApiKey());
+    }
 }

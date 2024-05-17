@@ -37,4 +37,8 @@ public class Api {
         return new PredictionHandler(this);
     }
 
+    public FeedbackHandler feedback() {
+        return new FeedbackHandler(this);
+    }
+
 }
