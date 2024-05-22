@@ -5,29 +5,31 @@
     <artifactId>java-sdk</artifactId>
     <packaging>jar</packaging>
     <name>java-sdk</name>
-    <version>0.0.1-SNAPSHOT</version>
-    <scm>
-        <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
-        <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>
-        <url>https://github.com/openapitools/openapi-generator</url>
-    </scm>
+    <version>0.1.0</version>
 
     <licenses>
         <license>
-            <name>Unlicense</name>
-            <url>http://unlicense.org</url>
-            <distribution>repo</distribution>
+            <name>MIT License</name>
+            <url>https://opensource.org/license/mit</url>
         </license>
     </licenses>
 
     <developers>
         <developer>
-            <name>OpenAPI-Generator Contributors</name>
-            <email>team@openapitools.org</email>
-            <organization>OpenAPITools.org</organization>
-            <organizationUrl>http://openapitools.org</organizationUrl>
+            <name>Kintsugi Engineering Team</name>
+            <email>java-jdk@kintsugihealth.com</email>
+            <organization>Kintsugi Health</organization>
+            <organizationUrl>https://www.kintsugihealth.com/</organizationUrl>
         </developer>
     </developers>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>Kintsugi Health Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/kintsugihealth/java-sdk</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>

@@ -8,12 +8,23 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Handler to interact with all endpoints related to feedback.
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 public class FeedbackHandler {
 
     private Api api;
 
+    /**
+     * Send feedback related to a previous depression prediction.
+     *
+     * @param sessionId session ID respective to the prediction.
+     * @param value the correct depression label/output.
+     *
+     * @throws ApiException
+     */
     public void depression(String sessionId, boolean value) throws ApiException {
         PredictionValidBinaryString convertedValue = PredictionValidBinaryString.False;
 
@@ -43,10 +54,24 @@ public class FeedbackHandler {
         }
     }
 
+    /**
+     * Send PHQ-2 answers as feedback related to a previous prediction.
+     *
+     * @param sessionId session ID respective to the prediction.
+     * @param answers PHQ-2 answers.
+     * @throws ApiException
+     */
     public void phq2(String sessionId, List<PredictionValidPHQInt> answers) throws ApiException {
         phq(sessionId, answers);
     }
 
+    /**
+     * Send PHQ-9 answers as feedback related to a previous prediction.
+     *
+     * @param sessionId session ID respective to the prediction.
+     * @param answers PHQ-9 answers.
+     * @throws ApiException
+     */
     public void phq9(String sessionId, List<PredictionValidPHQInt> answers) throws ApiException {
         phq(sessionId, answers);
     }

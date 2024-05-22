@@ -1,8 +1,37 @@
-# Kintsugi Java SDJ
+# Kintsugi Java SDK
 
 Java SDK to access Kintsugi Voice API V2.
 
 ## Usage
+Take a look on how to configure it in your project and use its features.
+
+### Maven dependency
+First, add the Kintsugi Health Github repository to the list of Maven enabled repositories on settings.xml file:
+
+```
+<repository>
+    <id>github</id>
+    <url>https://maven.pkg.github.com/kintsugihealth/java-sdk</url>
+    <snapshots>
+        <enabled>true</enabled>
+    </snapshots>
+</repository>
+```
+
+Then, add it as dependency to pom.xml:
+
+```
+<dependencies>
+    <dependency>
+        <groupId>com.kintsugihealth</groupId>
+        <artifactId>java-sdk</artifactId>
+        <version>${kintsugi-java-sdk-version}</version>
+    </dependency>
+</dependencies>
+```
+
+### Code Example
+
 ```
 package com.kintsugihealth.client.example;
 
