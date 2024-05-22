@@ -18,7 +18,7 @@ First, add the Kintsugi Health Github repository to the list of Maven enabled re
 </repository>
 ```
 
-Then, add it as dependency to pom.xml:
+Then, add it as dependency to pom.xml file:
 
 ```
 <dependencies>
