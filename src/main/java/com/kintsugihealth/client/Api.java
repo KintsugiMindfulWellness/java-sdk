@@ -33,7 +33,8 @@ public class Api {
      * @param userId user related to the prediction.
      * @param metadata additional data to customize how prediction is performed.
      * @return a new session ID as a string.
-     * @throws ApiException
+     *
+     * @throws ApiException if an exception occurs.
      */
     public String newSession(String userId, SessionSessionMetadata metadata) throws ApiException {
         InitiateNewInitiateRequest params = new InitiateNewInitiateRequest()
@@ -48,8 +49,7 @@ public class Api {
     }
 
     /**
-     * Return the api authentication key.
-     * @return
+     * @return the api authentication key.
      */
     public String getXApiKey() {
         return xApiKey;

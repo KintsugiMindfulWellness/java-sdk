@@ -32,8 +32,7 @@ public class PredictionHandler {
      * @param allowedSampleRate expected sample rate of given audio file.
      *
      * @return a session id that identifies this given prediction.
-     *
-     * @throws ApiException
+     * @throws ApiException if an exception occurs.
      */
     public String predict(
             String userId, File audioFile, SessionSessionMetadata metadata, Integer allowedSampleRate
@@ -48,14 +47,13 @@ public class PredictionHandler {
     }
 
     /**
-     * Returns a new handler to send feedback about predictions.
+     * Request a new prediction.
      *
      * @param userId unique identifier of a given user.
      * @param audioFile audio file to use as input for prediction.
      *
-     * @return
-     *
-     * @throws ApiException
+     * @return the session ID that identifies this prediction request.
+     * @throws ApiException if an exception occurs.
      */
     public String predict(String userId, File audioFile) throws ApiException {
         return predict(userId, audioFile, null, null);
@@ -66,20 +64,20 @@ public class PredictionHandler {
      *
      * @param sessionId session ID returned when a given prediction was created.
      *
-     * @return
-     * @throws ApiException
+     * @return the result of a single prediction
+     * @throws ApiException if an exception occurs.
      */
     public PredictResponsePredictionRecordBySession getPredictionBySession(String sessionId) throws ApiException {
         return new PredictGetApi().predictSessionsSessionIdGet(sessionId, api.getXApiKey());
     }
 
     /**
-     * Consult all the results respective to a given user.
+     * Consult all prediction results respective to a given user.
      *
      * @param userId unique user identifier.
      *
-     * @return
-     * @throws ApiException
+     * @return a list of prediction results.
+     * @throws ApiException if an exception occurs.
      */
     public List<PredictResponsePredictionRecord> getPredictionsByUser(String userId) throws ApiException {
         return new PredictGetApi().predictUsersUserIdGet(userId, api.getXApiKey());

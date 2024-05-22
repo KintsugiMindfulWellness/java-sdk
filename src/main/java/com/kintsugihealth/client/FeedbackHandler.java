@@ -23,7 +23,7 @@ public class FeedbackHandler {
      * @param sessionId session ID respective to the prediction.
      * @param value the correct depression label/output.
      *
-     * @throws ApiException
+     * @throws ApiException if an exception occurs.
      */
     public void depression(String sessionId, boolean value) throws ApiException {
         PredictionValidBinaryString convertedValue = PredictionValidBinaryString.False;
@@ -59,7 +59,8 @@ public class FeedbackHandler {
      *
      * @param sessionId session ID respective to the prediction.
      * @param answers PHQ-2 answers.
-     * @throws ApiException
+     *
+     * @throws ApiException if an exception occurs.
      */
     public void phq2(String sessionId, List<PredictionValidPHQInt> answers) throws ApiException {
         phq(sessionId, answers);
@@ -70,7 +71,8 @@ public class FeedbackHandler {
      *
      * @param sessionId session ID respective to the prediction.
      * @param answers PHQ-9 answers.
-     * @throws ApiException
+     *
+     * @throws ApiException if an exception occurs.
      */
     public void phq9(String sessionId, List<PredictionValidPHQInt> answers) throws ApiException {
         phq(sessionId, answers);
