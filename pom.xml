@@ -27,7 +27,7 @@
         <repository>
             <id>github</id>
             <name>Kintsugi Health Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/kintsugihealth/java-sdk</url>
+            <url>https://maven.pkg.github.com/KintsugiMindfulWellness/java-sdk</url>
         </repository>
     </distributionManagement>
 

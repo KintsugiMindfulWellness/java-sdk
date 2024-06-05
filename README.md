@@ -11,7 +11,7 @@ First, add the Kintsugi Health Github repository to the list of Maven enabled re
 ```
 <repository>
     <id>kintsugihealth</id>
-    <url>https://maven.pkg.github.com/kintsugihealth/java-sdk</url>
+    <url>https://maven.pkg.github.com/KintsugiMindfulWellness/java-sdk</url>
     <snapshots>
         <enabled>true</enabled>
     </snapshots>
@@ -23,7 +23,7 @@ Then, add it as dependency to pom.xml file:
 ```
 <dependencies>
     <dependency>
-        <groupId>com.kintsugihealth</groupId>
+        <groupId>com.kintsugi</groupId>
         <artifactId>java-sdk</artifactId>
         <version>${kintsugi-java-sdk-version}</version>
     </dependency>
@@ -33,11 +33,11 @@ Then, add it as dependency to pom.xml file:
 ### Code Example
 
 ```
-package com.kintsugihealth.client.example;
+package com.kintsugi.client.example;
 
-import com.kintsugihealth.client.Api;
-import com.kintsugihealth.client.openapi.invoker.ApiException;
-import com.kintsugihealth.client.openapi.model.*;
+import com.kintsugi.client.Api;
+import com.kintsugi.client.openapi.invoker.ApiException;
+import com.kintsugi.client.openapi.model.*;
 
 import java.io.File;
 import java.util.Arrays;
