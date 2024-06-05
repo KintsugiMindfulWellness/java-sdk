@@ -10,7 +10,7 @@ First, add the Kintsugi Health Github repository to the list of Maven enabled re
 
 ```
 <repository>
-    <id>kintsugihealth</id>
+    <id>kintsugi</id>
     <url>https://maven.pkg.github.com/KintsugiMindfulWellness/java-sdk</url>
     <snapshots>
         <enabled>true</enabled>
