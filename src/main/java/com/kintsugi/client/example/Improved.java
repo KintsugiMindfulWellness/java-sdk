@@ -43,25 +43,37 @@ public class Improved {
         //Depression feedback
         api.feedback().depression(sessionId, true);
 
-        //PHQ2 feedback
-        List<PredictionValidPHQInt> answersPHQ2 = Arrays.asList(
-                PredictionValidPHQInt.PHQVal1,
-                PredictionValidPHQInt.PHQVal2
+        //PHQ-2 feedback
+        List<PredictionValidFeedbackInt> answersPHQ2 = Arrays.asList(
+                PredictionValidFeedbackInt.FeebackVal0,
+                PredictionValidFeedbackInt.FeebackVal1
         );
         api.feedback().phq2(sessionId, answersPHQ2);
 
-        //PHQ9 feedback
-        List<PredictionValidPHQInt> answersPHQ9 = Arrays.asList(
-                PredictionValidPHQInt.PHQVal1,
-                PredictionValidPHQInt.PHQVal2,
-                PredictionValidPHQInt.PHQVal0,
-                PredictionValidPHQInt.PHQVal1,
-                PredictionValidPHQInt.PHQVal2,
-                PredictionValidPHQInt.PHQVal0,
-                PredictionValidPHQInt.PHQVal1,
-                PredictionValidPHQInt.PHQVal2,
-                PredictionValidPHQInt.PHQVal0
+        //PHQ-9 feedback
+        List<PredictionValidFeedbackInt> answersPHQ9 = Arrays.asList(
+                PredictionValidFeedbackInt.FeebackVal1,
+                PredictionValidFeedbackInt.FeebackVal2,
+                PredictionValidFeedbackInt.FeebackVal0,
+                PredictionValidFeedbackInt.FeebackVal1,
+                PredictionValidFeedbackInt.FeebackVal2,
+                PredictionValidFeedbackInt.FeebackVal0,
+                PredictionValidFeedbackInt.FeebackVal1,
+                PredictionValidFeedbackInt.FeebackVal2,
+                PredictionValidFeedbackInt.FeebackVal0
         );
         api.feedback().phq9(sessionId, answersPHQ9);
+
+        //GAD-7 feedback
+        List<PredictionValidFeedbackInt> answersGAD7 = Arrays.asList(
+                PredictionValidFeedbackInt.FeebackVal1,
+                PredictionValidFeedbackInt.FeebackVal2,
+                PredictionValidFeedbackInt.FeebackVal0,
+                PredictionValidFeedbackInt.FeebackVal1,
+                PredictionValidFeedbackInt.FeebackVal2,
+                PredictionValidFeedbackInt.FeebackVal0,
+                PredictionValidFeedbackInt.FeebackVal1
+        );
+        api.feedback().gad7(sessionId, answersGAD7);
     }
 }

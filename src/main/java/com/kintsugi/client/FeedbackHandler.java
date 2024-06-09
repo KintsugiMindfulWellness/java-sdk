@@ -38,15 +38,15 @@ public class FeedbackHandler {
         new FeedbackApi().feedbackDepressionBinaryPatch(api.getXApiKey(), data);
     }
 
-    private void phq(String sessionId, List<PredictionValidPHQInt> answers) throws ApiException {
-        if (answers == null || (answers.size() != 2 && answers.size() != 9)) {
-            throw new IllegalArgumentException("Answers must contain exactly 2 or 9 elements.");
-        }
-
+    private void sendAnswers(String sessionId, List<PredictionValidFeedbackInt> answers) throws ApiException {
         if (answers.size() == 2) {
             FeedbackRequestPHQ2 data = new FeedbackRequestPHQ2().sessionId(sessionId);
             answers.forEach(data::addDataItem);
             new FeedbackApi().feedbackPhq2Patch(api.getXApiKey(), data);
+        } else if (answers.size() == 7) {
+            FeedbackRequestGAD7 data = new FeedbackRequestGAD7().sessionId(sessionId);
+            answers.forEach(data::addDataItem);
+            new FeedbackApi().feedbackGad7Patch(api.getXApiKey(), data);
         } else {
             FeedbackRequestPHQ9 data = new FeedbackRequestPHQ9().sessionId(sessionId);
             answers.forEach(data::addDataItem);
@@ -62,8 +62,11 @@ public class FeedbackHandler {
      *
      * @throws ApiException if an exception occurs.
      */
-    public void phq2(String sessionId, List<PredictionValidPHQInt> answers) throws ApiException {
-        phq(sessionId, answers);
+    public void phq2(String sessionId, List<PredictionValidFeedbackInt> answers) throws ApiException {
+        if (answers == null || answers.size() != 2) {
+            throw new IllegalArgumentException("PHQ-2 answers must contains exactly 2 values.");
+        }
+        sendAnswers(sessionId, answers);
     }
 
     /**
@@ -74,8 +77,24 @@ public class FeedbackHandler {
      *
      * @throws ApiException if an exception occurs.
      */
-    public void phq9(String sessionId, List<PredictionValidPHQInt> answers) throws ApiException {
-        phq(sessionId, answers);
+    public void phq9(String sessionId, List<PredictionValidFeedbackInt> answers) throws ApiException {
+        if (answers == null || answers.size() != 9) {
+            throw new IllegalArgumentException("PHQ-9 answers must contains exactly 9 values.");
+        }
+        sendAnswers(sessionId, answers);
+    }
+
+    /**
+     * Send GAD-7 answers as feedback related to a previous prediction.
+     * @param sessionId session ID respective to the prediction.
+     * @param answers GAD-7 answers.
+     * @throws ApiException if an exception occurs.
+     */
+    public void gad7(String sessionId, List<PredictionValidFeedbackInt> answers) throws ApiException {
+        if (answers == null || answers.size() != 7) {
+            throw new IllegalArgumentException("GAD-7 answers must contains exactly 7 values.");
+        }
+        sendAnswers(sessionId, answers);
     }
 
 }

@@ -1,7 +1,7 @@
 package com.kintsugi.client;
 
 import com.kintsugi.client.openapi.api.PredictGetApi;
-import com.kintsugi.client.openapi.api.PredictSubmitV1Api;
+import com.kintsugi.client.openapi.api.PredictSubmitV2Api;
 import com.kintsugi.client.openapi.invoker.ApiException;
 import com.kintsugi.client.openapi.model.PredictResponsePredictionInitiated;
 import com.kintsugi.client.openapi.model.PredictResponsePredictionRecord;
@@ -38,7 +38,7 @@ public class PredictionHandler {
             String userId, File audioFile, SessionSessionMetadata metadata, Integer allowedSampleRate
     ) throws ApiException {
         BigDecimal sampleRate = allowedSampleRate != null ? BigDecimal.valueOf(allowedSampleRate) : null;
-        PredictSubmitV1Api predictApi = new PredictSubmitV1Api();
+        PredictSubmitV2Api predictApi = new PredictSubmitV2Api();
         PredictResponsePredictionInitiated response = predictApi.predictionPost(
                 api.getXApiKey(), audioFile, api.newSession(userId, metadata), sampleRate
         );
