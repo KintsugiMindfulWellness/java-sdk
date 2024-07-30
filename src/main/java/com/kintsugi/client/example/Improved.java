@@ -13,17 +13,16 @@ public class Improved {
         //Configuration parameters
         String xApiKey = System.getenv("X_API_KEY");
         String userId = System.getenv("USER_ID");
-        String url = System.getenv("URL");
 
         //Arguments
-        File audioFile = new File("/Users/jackson/Downloads/test_audio.wav");
+        File audioFile = new File("/Users/jackson/Workspaces/Kintsugi/files/44100/success.wav");
         int allowedSampleRate = 44100;
         SessionSessionMetadata metadata = new SessionSessionMetadata()
                 .age(39)
                 .gender(SessionGender.MALE_GENDER);
 
         //API instantiation
-        Api api = new Api(xApiKey, url);
+        Api api = new Api(xApiKey);
 
         //Prediction using all arguments
         api.prediction().predict(userId, audioFile, metadata, allowedSampleRate);

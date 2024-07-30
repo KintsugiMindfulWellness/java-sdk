@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 public class Api {
+    private static final String DEFAULT_URL = "https://api.kintsugihealth.com/v2";
     private String xApiKey;
     private InitiateApi internalApi;
 
@@ -25,6 +26,14 @@ public class Api {
         this.xApiKey = xApiKey;
         internalApi = new InitiateApi();
         internalApi.getApiClient().setBasePath(url);
+    }
+
+    /**
+     * Creates a new api instance pointing to default url (production).
+     * @param xApiKey authentication key necessary to make api requests.
+     */
+    public Api(String xApiKey) {
+        this(xApiKey, DEFAULT_URL);
     }
 
     /**

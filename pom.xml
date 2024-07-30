@@ -5,7 +5,7 @@
     <artifactId>java-sdk</artifactId>
     <packaging>jar</packaging>
     <name>java-sdk</name>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 
     <licenses>
         <license>
