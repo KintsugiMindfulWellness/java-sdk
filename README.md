@@ -68,10 +68,18 @@ public class Improved {
 
         //Get prediction by session ID
         PredictResponsePredictionRecordBySession predictionBySession = api.prediction().getPredictionBySession(sessionId);
+        while("processing".equals(predictionBySession.getStatus())) {
+                Thread.sleep(5000);
+                predictionBySession = api.prediction().getPredictionBySession(sessionId);
+        }
         System.out.println(predictionBySession);
 
         //Get prediction by user ID
         List<PredictResponsePredictionRecord> predictionsByUser = api.prediction().getPredictionsByUser(userId);
+        while("processing".equals(predictionByUser.getStatus())) {
+                Thread.sleep(5000);
+                predictionsByUser = api.prediction().getPredictionsByUser(userId);
+        }
         System.out.println(predictionsByUser);
 
         //Depression feedback
