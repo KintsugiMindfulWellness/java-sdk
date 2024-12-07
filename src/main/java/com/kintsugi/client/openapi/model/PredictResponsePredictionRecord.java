@@ -64,6 +64,12 @@ public class PredictResponsePredictionRecord {
   public static final String JSON_PROPERTY_PREDICTED_SCORE = "predicted_score";
   private String predictedScore;
 
+  public static final String JSON_PROPERTY_PREDICTED_SCORE_DEPRESSION = "predicted_score_depression";
+  private String predictedScoreDepression;
+
+  public static final String JSON_PROPERTY_PREDICTED_SCORE_ANXIETY = "predicted_score_anxiety";
+  private String predictedScoreAnxiety;
+
   public static final String JSON_PROPERTY_SESSION_ID = "session_id";
   private String sessionId;
 
@@ -258,6 +264,57 @@ public class PredictResponsePredictionRecord {
   }
 
 
+  //*** */
+  public PredictResponsePredictionRecord predictedScoreDepression(String predictedScoreDepression) {
+    
+    this.predictedScoreDepression = predictedScoreDepression;
+    return this;
+  }
+
+   /**
+   * Get predictedScoreDepression
+   * @return predictedScoreDepression
+  **/
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_PREDICTED_SCORE_DEPRESSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getPredictedScoreDepression() {
+    return predictedScoreDepression;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_PREDICTED_SCORE_DEPRESSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPredictedScoreDepression(String predictedScoreDepression) {
+    this.predictedScoreDepression = predictedScoreDepression;
+  }
+//*** */
+public PredictResponsePredictionRecord predictedScoreAnxiety(String predictedScoreAnxiety) {
+    
+  this.predictedScoreAnxiety = predictedScoreAnxiety;
+  return this;
+}
+
+ /**
+ * Get predictedScoreAnxiety
+ * @return predictedScoreAnxiety
+**/
+@javax.annotation.Nullable
+@JsonProperty(JSON_PROPERTY_PREDICTED_SCORE_ANXIETY)
+@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+public String getPredictedScoreAnxiety() {
+  return predictedScoreAnxiety;
+}
+
+
+@JsonProperty(JSON_PROPERTY_PREDICTED_SCORE_ANXIETY)
+@JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+public void setPredictedScoreAnxiety(String predictedScoreAnxiety) {
+  this.predictedScoreAnxiety = predictedScoreAnxiety;
+}
+
   public PredictResponsePredictionRecord sessionId(String sessionId) {
     
     this.sessionId = sessionId;
@@ -372,6 +429,8 @@ public class PredictResponsePredictionRecord {
     sb.append("    modelGranularity: ").append(toIndentedString(modelGranularity)).append("\n");
     sb.append("    predictError: ").append(toIndentedString(predictError)).append("\n");
     sb.append("    predictedScore: ").append(toIndentedString(predictedScore)).append("\n");
+    sb.append("    predictedScoreDepression: ").append(toIndentedString(predictedScoreDepression)).append("\n");
+    sb.append("    predictedScoreAnxiety: ").append(toIndentedString(predictedScoreAnxiety)).append("\n");
     sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");

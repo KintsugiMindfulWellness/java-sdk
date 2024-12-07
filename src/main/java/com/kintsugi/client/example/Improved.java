@@ -33,6 +33,14 @@ public class Improved {
 
         //Get prediction by session ID
         PredictResponsePredictionRecordBySession predictionBySession = api.prediction().getPredictionBySession(sessionId);
+        while(predictionBySession.getStatus().equals("processing")) {
+                try {
+                        Thread.sleep(1000);
+                        predictionBySession = api.prediction().getPredictionBySession(sessionId);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+        }
         System.out.println(predictionBySession);
 
         //Get prediction by user ID
